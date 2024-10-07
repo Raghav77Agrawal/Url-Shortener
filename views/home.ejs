@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+   <h1>URL Shortener</h1>
+   <% if(locals.id){%>
+    <a href = "https://localhost:8001/url/<%=id %>">https://localhost:8001/url/<%=id %></a>
+    <%}%>
+   <form method = 'post' action = '/url'>
+    <label>Enter Your name</label>
+    <input type = 'text' placeholder = 'Original maal daal' name = 'url'>
+    <button type = "submit">Generate</button>
+   </form>
+  
+  <% if(locals.myurl){%>
+  <table>
+    <tr>
+        <th>S.No</th>
+        <th>Original Url</th>
+        <th> Short Url</th>
+        <th>Clicks</th>
+    </tr>
+
+  <% myurl.forEach((url, index)=>{%>
+    <tr>
+        <td><%= index+1%></td>
+        <td><%= url.redirecturl%></td>
+        <td><%= url.shortid%></td>
+        <td><%= url.visithistory.length%></td>
+    </tr>
+
+  <%})}%>
+  </table>
+</body>
+</html>
